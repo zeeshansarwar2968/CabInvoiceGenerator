@@ -10,6 +10,7 @@ namespace CabInvoiceGenerator.Tests
     [TestClass()]
     public class InvoiceGeneratorTests
     {
+        //Test
         [TestMethod()]
         public void GivenDistanceAndTime_CalculateFareMethodShould_ReturnTotalFare()
         {
@@ -41,5 +42,25 @@ namespace CabInvoiceGenerator.Tests
             Assert.AreEqual(expectedFare, actualFare);
         }
 
+
+        //Test case developed for testing the multiple rides implementation
+        [TestMethod()]
+        public void Given5Rides_CalculateFareMethodShould_ReturnTotalFare()
+        {
+            Ride[] rides =
+            {
+                new Ride(1.0, 1),
+                new Ride(2.0, 2),
+                new Ride(3.0, 2),
+                new Ride(4.0, 4),
+                new Ride(5.0, 3),
+                new Ride(6.0, 3)
+            };
+            double expected = 225;
+            InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+            InvoiceSummary summary = invoiceGenerator.CalculateFare(rides);
+            double actual = summary.totalFare;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

@@ -20,6 +20,8 @@ namespace CabInvoiceGenerator
             Console.WriteLine("--------------------------------------------------");
             Console.WriteLine("The cost of the trip is : "+invoiceGenerator.CalculateFare(distance,time));
             Console.ResetColor();
+
+            Console.ReadKey();
         }
     }
 }
