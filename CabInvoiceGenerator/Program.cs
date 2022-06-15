@@ -30,18 +30,18 @@ namespace CabInvoiceGenerator
                 new Ride(4.0, 4),
                 new Ride(5.0, 3)
             };
-            string userId = "12345";
-            RideRepository rideRepository = new RideRepository();
-            rideRepository.AddRide(userId, rides);
-            Ride[] actual = rideRepository.GetRides(userId);
-            //foreach (var item in actual)
+            //string userId = "12345";
+            //RideRepository rideRepository = new RideRepository();
+            //rideRepository.AddRide(userId, rides);
+            //Ride[] actual = rideRepository.GetRides(userId);
+            ////foreach (var item in actual)
+            ////{
+            ////    Console.WriteLine("item : "+item.distance);
+            ////}
+            //if (actual.Equals(rides))
             //{
-            //    Console.WriteLine("item : "+item.distance);
+            //    Console.WriteLine("They are equal");
             //}
-            if (actual.Equals(rides))
-            {
-                Console.WriteLine("They are equal");
-            }
             Console.ReadKey();
         }
     }
