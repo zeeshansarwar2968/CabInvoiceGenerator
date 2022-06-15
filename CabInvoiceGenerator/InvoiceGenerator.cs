@@ -8,6 +8,8 @@ namespace CabInvoiceGenerator
 {
     public class InvoiceGenerator
     {
+        public RideRepository rideRepository;
+
         //Basic logic to calculate the fare of a single trip
         public double CalculateFare(double distance, int time)
         {
@@ -30,6 +32,18 @@ namespace CabInvoiceGenerator
                 totalFare += this.CalculateFare(ride.distance, ride.time);
             }
             return new InvoiceSummary(rides.Length, totalFare);
+        }
+
+        //Logic to add rides 
+        public void AddRides(string userId, Ride[] rides)
+        {
+            rideRepository.AddRide(userId, rides);
+        }
+
+        //Logic 
+        public InvoiceSummary GetInvoiceSummary(string userId)
+        {
+            return this.CalculateFare(rideRepository.GetRides(userId));
         }
     }
 }

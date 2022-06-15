@@ -20,7 +20,28 @@ namespace CabInvoiceGenerator
             Console.WriteLine("--------------------------------------------------");
             Console.WriteLine("The cost of the trip is : "+invoiceGenerator.CalculateFare(distance,time));
             Console.ResetColor();
-
+            
+            Console.WriteLine("------------------------------------------------");
+            Ride[] rides =
+            {
+                new Ride(1.0, 1),
+                new Ride(2.0, 2),
+                new Ride(3.0, 2),
+                new Ride(4.0, 4),
+                new Ride(5.0, 3)
+            };
+            string userId = "12345";
+            RideRepository rideRepository = new RideRepository();
+            rideRepository.AddRide(userId, rides);
+            Ride[] actual = rideRepository.GetRides(userId);
+            //foreach (var item in actual)
+            //{
+            //    Console.WriteLine("item : "+item.distance);
+            //}
+            if (actual.Equals(rides))
+            {
+                Console.WriteLine("They are equal");
+            }
             Console.ReadKey();
         }
     }

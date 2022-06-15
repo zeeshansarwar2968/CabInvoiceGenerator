@@ -15,8 +15,8 @@ namespace CabInvoiceGenerator.Tests
         public void GivenDistanceAndTime_CalculateFareMethodShould_ReturnTotalFare()
         {
             InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
-            double distance = 20;
-            int time = 45;
+            double distance = 20;  //20x10 =200
+            int time = 45; //45x1=45
 
             // Calculating fare by passing the values of distance = 20km and time = 45 minutes
             double actualFare = invoiceGenerator.CalculateFare(distance, time);
@@ -31,8 +31,8 @@ namespace CabInvoiceGenerator.Tests
         public void GivenDistanceAndTime_CalculateFareMethodShould_ReturnMinimumFare()
         {
             InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
-            double distance = 0.2;
-            int time = 2;
+            double distance = 0.2; //0.2x10=2
+            int time = 2; //2x1=2
 
             // Calculating fare by passing the values of distance = 0.2km (200 m) and time = 2 minutes
             double actualFare = invoiceGenerator.CalculateFare(distance, time);
@@ -80,6 +80,26 @@ namespace CabInvoiceGenerator.Tests
             InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
             InvoiceSummary summary = invoiceGenerator.CalculateFare(rides);
             Assert.AreEqual(summary, expected);
+        }
+
+        //Test case developed for testing the multiple rides implementation
+        [TestMethod()]
+        public void GivenUserId_InvoiceServiceShould_ReturnListOfRides()
+        {
+            Ride[] rides =
+            {
+                new Ride(1.0, 1),
+                new Ride(2.0, 2),
+                new Ride(3.0, 2),
+                new Ride(4.0, 4),
+                new Ride(5.0, 3),
+                new Ride(6.0, 3)
+            };
+            string userId = "12345";
+            RideRepository rideRepository = new RideRepository();
+            rideRepository.AddRide(userId, rides);
+            Ride[] actual = rideRepository.GetRides(userId);
+            Assert.AreEqual(rides, actual);
         }
 
     }
