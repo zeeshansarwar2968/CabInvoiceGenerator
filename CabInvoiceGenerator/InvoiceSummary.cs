@@ -27,7 +27,7 @@ namespace CabInvoiceGenerator
         public override bool Equals(object obj)    //originally Determines whether the specified object instances are considered equal.
         {
             if (obj == null) return false;
-            if (!(obj is InvoiceSummary)) return false;
+            if (!(obj is InvoiceSummary)) return false;   // the is keyword allows us to check if a variable is of a given type.
 
             InvoiceSummary inputObject = (InvoiceSummary)obj;
             return this.numberOfRides == inputObject.numberOfRides && this.totalFare == inputObject.totalFare && this.averageFare == inputObject.averageFare;
